@@ -57,7 +57,7 @@
   transition: all 250ms ease-in-out 0ms;
 }
 .container span:hover {
-  letter-spacing: 0.02rem;
+  font-size: 33px;
 }
 .body {
   height: 100%;
