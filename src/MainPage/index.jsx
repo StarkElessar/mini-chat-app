@@ -8,7 +8,7 @@ const MainPage = (props) => {
 
 
   return (
-    <div className='mainPage__wrapper'>
+    <div className='main-page__wrapper'>
       <div className="header">
         <div className="container">
           <button onClick={showModal}>Create a channel</button>
@@ -37,8 +37,11 @@ const ModalNewChannel = (props) => {
       <h2>New Channel</h2>
       <form action="">
         <input type="text" placeholder='Channel Title..' required/>
-        <input type="text" placeholder='Channel Description' required/>
-        <input type="submit" value='Create' />
+        <input type="text" placeholder='Channel Description' required />
+        <NavLink to='/new-channel'>
+          <input type="submit" value='Create' />
+        </NavLink>
+        
       </form>
     </div>
   )
