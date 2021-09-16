@@ -2,14 +2,18 @@ import React from "react";
 import './style.css';
 import { NavLink } from "react-router-dom";
 
+const modal = React.createRef();
+
+const showModal = () => {
+  modal.classList.add('show');
+};
+
 const MainPage = (props) => {
   return (
     <div className='mainPage__wrapper'>
       <div className="header">
         <div className="container">
-          <NavLink to='/new-channel'>
-            <button>Create a channel</button>
-          </NavLink>
+            <button onClick={showModal}>Create a channel</button>
           <NavLink to='/'>
             <span>Stark</span>
           </NavLink>
@@ -31,7 +35,7 @@ const WelcomeComponent = (props) => {
 
 const NewChannel = (props) => {
   return (
-    <div className='newChannel'>
+    <div className='newChannel' ref={modal}>
       <h2>New Channel</h2>
       <form action="">
         <input type="text" placeholder='Channel Title..' required/>
