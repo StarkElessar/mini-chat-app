@@ -1,6 +1,6 @@
 import React from "react";
 import './style.css';
-import { NavLink, Route } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const MainPage = (props) => {
   return (
@@ -16,13 +16,9 @@ const MainPage = (props) => {
         </div>
       </div>
       <div className="body">
-        <Route exact path='/main-page'>
-          <WelcomeComponent />
-        </Route>
-        <Route exact path='/new-channel'>
-          <NewChannel />
-        </Route>
+        <WelcomeComponent />
       </div>
+      <NewChannel />
     </div>
   )
 };
@@ -38,8 +34,8 @@ const NewChannel = (props) => {
     <div className='newChannel'>
       <h2>New Channel</h2>
       <form action="">
-        <input type="text" placeholder='Channel Title..' />
-        <input type="text" placeholder='Channel Description' />
+        <input type="text" placeholder='Channel Title..' required/>
+        <input type="text" placeholder='Channel Description' required/>
         <input type="submit" value='Create' />
       </form>
     </div>
