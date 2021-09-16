@@ -73,6 +73,26 @@
   text-transform: uppercase;
   font-family: 'Poppins', sans-serif;
 }
+
+.newChannel {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.89);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 450ms ease;
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.newChannel.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .newChannel h2 {
   font-size: 36px;
   color: #fff;
