@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import './style.css';
 import { NavLink } from "react-router-dom";
-
-const modal = React.createRef();
-
-const showModal = () => {
-  modal.classList.add('show');
-};
+import styled from "styled-components";
 
 const MainPage = (props) => {
+  const [isVisible, setVisibiliti] = useState(false);
+  const showModal = () => setVisibiliti();
+  const buttonShowModalRef = useRef();
+
+  useEffect(() => {
+    buttonShowModalRef.addEventListener('click', showModal);
+  }, []);
+
   return (
     <div className='mainPage__wrapper'>
       <div className="header">
         <div className="container">
-            <button onClick={showModal}>Create a channel</button>
+          <button ref={buttonShowModalRef}>Create a channel</button>
           <NavLink to='/'>
             <span>Stark</span>
           </NavLink>
@@ -22,7 +25,7 @@ const MainPage = (props) => {
       <div className="body">
         <WelcomeComponent />
       </div>
-      <NewChannel />
+      <ModalNewChannel  />
     </div>
   )
 };
@@ -33,17 +36,31 @@ const WelcomeComponent = (props) => {
   )
 };
 
-const NewChannel = (props) => {
+const ModalNewChannel = (props) => {
   return (
-    <div className='newChannel' ref={modal}>
+    <NewChannelWrap isVisible={props.isVisible}>
       <h2>New Channel</h2>
       <form action="">
         <input type="text" placeholder='Channel Title..' required/>
         <input type="text" placeholder='Channel Description' required/>
         <input type="submit" value='Create' />
       </form>
-    </div>
+    </NewChannelWrap>
   )
 };
+
+const NewChannelWrap = styled.div`
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.89);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 450ms ease;
+  opacity: ${({ isVisible }) => isVisible ? '1' : '0'};
+`;
 
 export default MainPage;

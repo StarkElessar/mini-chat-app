@@ -18,7 +18,6 @@ const LogIn = (props) => {
           <NavLink to='/main-page'>
             <input  type="submit" value='Login' />
           </NavLink>
-          
         </div>
       </form>
     </div>
