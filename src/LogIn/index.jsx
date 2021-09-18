@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState} from "react";
 import { NavLink } from "react-router-dom";
 import './style.css';
 
 const LogIn = (props) => {
+  // const [isAccess, setIsAccess] = useState(false);
+  // const ButtonIsValid = setIsAccess(true);
+
   return (
     <div className='login__wrapper'>
       <form action="#" method='GET'>
@@ -16,7 +19,7 @@ const LogIn = (props) => {
         </div>
         <div className='labelInput'>
           <NavLink to='/main-page'>
-            <input  type="submit" value='Login' />
+            <button>Login</button>
           </NavLink>
         </div>
       </form>

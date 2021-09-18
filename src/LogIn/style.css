@@ -35,7 +35,8 @@
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
 }
-.labelInput input {
+.labelInput input,
+.labelInput button {
   padding: 10px 10px;
   border-radius: 10px;
   font-family: 'Poppins', sans-serif;
@@ -46,13 +47,14 @@
 .labelInput:nth-child(2) input {
   width: 200px;
 }
-.labelInput input:focus {
+.labelInput input:focus,
+.labelInput button:focus {
   outline: 0;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2),
               0px 0px 10px 0px rgba(0, 0, 0, 0.2),
               0px 0px 15px 0px rgba(0, 0, 0, 0.2);
 }
-.labelInput:last-child input:hover {
+.labelInput:last-child button:hover {
   cursor: pointer;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1),
               0px 0px 10px 0px rgba(0, 0, 0, 0.1),
