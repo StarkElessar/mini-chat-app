@@ -1,0 +1,103 @@
+.settings__wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  width: 430px;
+  height: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgb(235, 235, 235);
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.1),
+              0px 0px 6px 0px rgba(0, 0, 0, 0.1),
+              0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+.settings__wrapper h2 {
+  position: absolute;
+  top: 0;
+  transform: translateY(-70px);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  font-size: 42px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: #fff;
+}
+.col-1 {
+  flex: 0 1 10%;
+  display: flex;
+  
+}
+.col-2 {
+  flex: 0 1 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.avatar {
+  overflow: hidden;
+  min-width: 140px;
+  height: 140px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2),
+              0px 0px 8px 0px rgba(0, 0, 0, 0.2),
+              0px 0px 14px 0px rgba(0, 0, 0, 0.2);
+}
+.avatar img {
+  width: 100%;
+  object-fit: cover;
+}
+.col-2 .labelInput {
+  margin-bottom: 10px;
+}
+.col-2 .labelInput label {
+  margin-bottom: 5px;
+}
+.input__setting {
+  width: 200px;
+  height: 35px;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid #8BC6EC;
+  transition: all 250ms ease;
+}
+.apply-btn {
+  display: inline-block;
+  width: 60px;
+  height: 35px;
+  border-radius: 10px;
+  line-height: 35px;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid #8BC6EC;
+  background-color: #8BC6EC;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1),
+              0px 0px 10px 0px rgba(0, 0, 0, 0.1),
+              0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  transition: all 250ms ease;
+}
+.input__setting:focus,
+.col-2 button:focus {
+  outline: 0;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2),
+              0px 0px 10px 0px rgba(0, 0, 0, 0.2),
+              0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+}
+.col-2 button:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2),
+              0px 0px 10px 0px rgba(0, 0, 0, 0.2),
+              0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+}
+.col-2 button:disabled {
+  color: rgb(231, 231, 231);
+  cursor: not-allowed;
+  background-color: #8bc5ec69;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0),
+              0px 0px 10px 0px rgba(0, 0, 0, 0),
+              0px 0px 15px 0px rgba(0, 0, 0, 0);
+}

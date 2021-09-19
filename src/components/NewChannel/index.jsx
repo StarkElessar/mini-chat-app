@@ -1,18 +1,21 @@
-import React from "react";
+import React, {useContext} from "react";
 import './style.css';
 import { NavLink } from "react-router-dom";
+import GlobalContext from "../../context/GlobalContext";
 
 const NewChannel = (props) => {
+  const { channelTitle, channelDescription, clearGlobalState, firstName, lastName } = useContext(GlobalContext);
+
   return (
     <div className='new-channel__wrapper'>
       <div className="new-channel__body">
         <div className="new-channel__header">
           <div className="title-block">
-            <h2>Your Title Channel</h2>
-            <span>Your description with random text, Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, labore.</span>
+            <h2>{channelTitle}</h2>
+            <span>{channelDescription}</span>
           </div>
-          <NavLink to='/'>
-            <button className='logout__btn'>Logout</button>
+          <NavLink to='/login'>
+            <button onClick={clearGlobalState} className='logout__btn'>Logout</button>
           </NavLink>
         </div>
         <div className="chat__body">
@@ -30,7 +33,7 @@ const NewChannel = (props) => {
               <img src="https://themified.com/friend-finder/images/users/user-4.jpg" alt="user-avatar" />
             </div>
             <div className="text__block">
-              <span className="user__name">Cris Haris</span>
+              <span className="user__name">{ firstName + ' ' + lastName }</span>
               <span className="user__messages">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quaerat reiciendis aut sint ut doloribus.</span>
             </div>
           </div>
@@ -48,7 +51,7 @@ const NewChannel = (props) => {
               <img src="https://themified.com/friend-finder/images/users/user-4.jpg" alt="user-avatar" />
             </div>
             <div className="text__block">
-              <span className="user__name">Cris Haris</span>
+              <span className="user__name">{firstName + ' ' + lastName}</span>
               <span className="user__messages">Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quaerat reiciendis aut sint ut doloribus.</span>
             </div>
           </div>
@@ -66,7 +69,7 @@ const NewChannel = (props) => {
               <img src="https://themified.com/friend-finder/images/users/user-4.jpg" alt="user-avatar" />
             </div>
             <div className="text__block">
-              <span className="user__name">Cris Haris</span>
+              <span className="user__name">{firstName + ' ' + lastName}</span>
               <span className="user__messages">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quaerat reiciendis aut sint ut doloribus.</span>
             </div>
           </div>
