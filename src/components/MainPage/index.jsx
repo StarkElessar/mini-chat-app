@@ -60,7 +60,6 @@ const ModalNewChannel = (props) => {
         <NavLink to='/new-channel'>
           <input disabled={!channelTitle || !channelDescription} type="submit" value='Create' />
         </NavLink>
-        
       </form>
     </div>
   )

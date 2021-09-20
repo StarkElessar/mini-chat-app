@@ -7,7 +7,9 @@ import {
   CLEAR_GLOBAL_STATE,
   UPDATE_USER_NAME,
   UPDATE_FIRST_NAME,
-  UPDATE_LAST_NAME
+  UPDATE_LAST_NAME,
+  SEND_TEXT_MESSAGE,
+  UPDATE_INPUT_TEXT_MESSAGE
 } from './actions';
 
 export const initialState = {
@@ -18,7 +20,10 @@ export const initialState = {
   channelDescription: '',
   userName: 'Stark',
   firstName: '',
-  lastName: ''
+  lastName: '',
+  channelMessages: [],
+  textMessage: '',
+  sendTextMessage: ''
 };
 
 export const reducer = (state, action) => {
@@ -40,7 +45,11 @@ export const reducer = (state, action) => {
     case UPDATE_FIRST_NAME:
       return { ...state, firstName: action.firstName};
     case UPDATE_LAST_NAME:
-      return { ...state, lastName: action.lastName};
+      return { ...state, lastName: action.lastName };
+    case UPDATE_INPUT_TEXT_MESSAGE:
+      return { ...state, textMessage: action.textMessage };
+    case SEND_TEXT_MESSAGE:
+      return { ...state, sendTextMessage: action.sendText };
     default:
       return state;
   }

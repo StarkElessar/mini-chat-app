@@ -1,10 +1,27 @@
-import React, {useContext} from "react";
+import React, { useContext, useState } from "react";
 import './style.css';
 import { NavLink } from "react-router-dom";
 import GlobalContext from "../../context/GlobalContext";
 
 const NewChannel = (props) => {
   const { channelTitle, channelDescription, clearGlobalState, firstName, lastName } = useContext(GlobalContext);
+  const [isTextInput, setIsTextInput] = useState();
+  const [isMessage, setIsMessage] = useState([
+    { id: 1, userName: `${firstName} ${lastName}`, textMessage: 'Привет как дела!' },
+    { id: 2, userName: `${firstName} ${lastName}`, textMessage: 'Что делаешЬ?' },
+    { id: 3, userName: `${firstName} ${lastName}`, textMessage: 'Почему мне не звонишь?' },
+  ]);
+
+  const sendNewMessage = (event) => {
+    event.preventDefault();
+    const newMessage = {
+      id: Date.now(),
+      userName: `${firstName} ${lastName}`,
+      textMessage: isTextInput
+    };
+    setIsMessage([...isMessage, newMessage]);
+    setIsTextInput('');
+}
 
   return (
     <div className='new-channel__wrapper'>
@@ -19,65 +36,37 @@ const NewChannel = (props) => {
           </NavLink>
         </div>
         <div className="chat__body">
-          <div className="user__message">
-            <div className="user__avatar">
-              <img src="https://themified.com/friend-finder/images/users/user-2.jpg" alt="user-avatar" />
-            </div>
-            <div className="text__block">
-              <span className="user__name">Sarah Cruiz</span>
-              <span className="user__messages">Lorem ipsum dolor sit amet.</span>
-            </div>
-          </div>
-          <div className="user__message">
-            <div className="user__avatar">
-              <img src="https://themified.com/friend-finder/images/users/user-4.jpg" alt="user-avatar" />
-            </div>
-            <div className="text__block">
-              <span className="user__name">{ firstName + ' ' + lastName }</span>
-              <span className="user__messages">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quaerat reiciendis aut sint ut doloribus.</span>
-            </div>
-          </div>
-          <div className="user__message">
-            <div className="user__avatar">
-              <img src="https://themified.com/friend-finder/images/users/user-2.jpg" alt="user-avatar" />
-            </div>
-            <div className="text__block">
-              <span className="user__name">Sarah Cruiz</span>
-              <span className="user__messages">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat.</span>
-            </div>
-          </div>
-          <div className="user__message">
-            <div className="user__avatar">
-              <img src="https://themified.com/friend-finder/images/users/user-4.jpg" alt="user-avatar" />
-            </div>
-            <div className="text__block">
-              <span className="user__name">{firstName + ' ' + lastName}</span>
-              <span className="user__messages">Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quaerat reiciendis aut sint ut doloribus.</span>
-            </div>
-          </div>
-          <div className="user__message">
-            <div className="user__avatar">
-              <img src="https://themified.com/friend-finder/images/users/user-2.jpg" alt="user-avatar" />
-            </div>
-            <div className="text__block">
-              <span className="user__name">Sarah Cruiz</span>
-              <span className="user__messages">Lorem ipsum.</span>
-            </div>
-          </div>
-          <div className="user__message">
-            <div className="user__avatar">
-              <img src="https://themified.com/friend-finder/images/users/user-4.jpg" alt="user-avatar" />
-            </div>
-            <div className="text__block">
-              <span className="user__name">{firstName + ' ' + lastName}</span>
-              <span className="user__messages">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At quaerat reiciendis aut sint ut doloribus.</span>
-            </div>
-          </div>
+
+          {
+            isMessage.map(({userName, textMessage, id, index}) =>
+              <UserMessage
+                key={id}
+                id={id}
+                userName={userName}
+                textMessage={textMessage}
+              />
+            )}
+
         </div>
         <form className="chat__footer">
-          <textarea name="user_text" id="user_text" placeholder='Type Your Message..' />
-          <button>Send</button>
+          <textarea value={isTextInput} onChange={event => setIsTextInput(event.target.value)} name="user_text" id="user_text" placeholder='Type Your Message..' />
+          <button onClick={sendNewMessage} >Send</button>
         </form>
+      </div>
+    </div>
+  )
+}
+
+const UserMessage = (props) => {
+  return (
+    <div className="user__message">
+      <div className="user__avatar">
+        <img src="https://themified.com/friend-finder/images/users/user-4.jpg" alt="user-avatar" />
+      </div>
+      <div className="text__block">
+        <span className="user__name">{props.userName}</span>
+        <span className="message__id">{props.id}</span>
+        <span className="user__messages">{props.textMessage}</span>
       </div>
     </div>
   )
