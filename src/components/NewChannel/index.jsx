@@ -7,9 +7,7 @@ const NewChannel = (props) => {
   const { channelTitle, channelDescription, clearGlobalState, firstName, lastName } = useContext(GlobalContext);
   const [isTextInput, setIsTextInput] = useState();
   const [isMessage, setIsMessage] = useState([
-    { id: 1, userName: `${firstName} ${lastName}`, textMessage: 'Привет как дела!' },
-    { id: 2, userName: `${firstName} ${lastName}`, textMessage: 'Что делаешЬ?' },
-    { id: 3, userName: `${firstName} ${lastName}`, textMessage: 'Почему мне не звонишь?' },
+    { id: '', userName: '', textMessage: '' }
   ]);
 
   const sendNewMessage = (event) => {

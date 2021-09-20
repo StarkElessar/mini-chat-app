@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import GlobalContext from '../../context/GlobalContext';
 import './style.css';
@@ -7,7 +7,18 @@ const LogIn = (props) => {
   const { email, password, setIsAuthenticated, updateEmail, updatePassword } = useContext(GlobalContext);
   const onEmailChange = (event) => updateEmail(event.target.value);
   const onPasswordChange = (event) => updatePassword(event.target.value);
-  const authenticate = () => setIsAuthenticated(true);
+  const authenticate = () => {
+    setIsAuthenticated(true);
+    localStorage.setItem('authenticate', true)
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem('authenticate')) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, []);
 
   return (
     <div className='login__wrapper'>
