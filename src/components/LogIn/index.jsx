@@ -1,24 +1,28 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import GlobalContext from '../../context/GlobalContext';
 import './style.css';
 
-const LogIn = (props) => {
-  const { email, password, setIsAuthenticated, updateEmail, updatePassword } = useContext(GlobalContext);
+const LogIn = () => {
+  const {
+    state: {
+      user: {
+        email,
+        password
+      }
+    },
+    actions: {
+      authenticate,
+      updateEmail,
+      updatePassword
+    },
+  } = useContext(GlobalContext);
   const onEmailChange = (event) => updateEmail(event.target.value);
   const onPasswordChange = (event) => updatePassword(event.target.value);
-  const authenticate = () => {
-    setIsAuthenticated(true);
-    localStorage.setItem('authenticate', true)
+  const authenticateUser = () => {
+    localStorage.setItem('isAuthenticated', true);
+    authenticate();
   };
-
-  useEffect(() => {
-    if (localStorage.getItem('authenticate')) {
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
-    }
-  }, []);
 
   return (
     <div className='login__wrapper'>
@@ -33,14 +37,14 @@ const LogIn = (props) => {
         </div>
         <div className='labelInput'>
           <NavLink to='/main-page'>
-            <button disabled={!email || password !== '123'} onClick={authenticate}>
+            <button disabled={!email || !password} onClick={authenticateUser}>
               Login
             </button>
           </NavLink>
         </div>
       </form>
     </div>
-  )
+  );
 };
 
 export default LogIn;
