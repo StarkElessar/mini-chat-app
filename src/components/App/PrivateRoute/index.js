@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 import GlobalContext from '../../../context/GlobalContext';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const { isAuthenticated } = useContext(GlobalContext);
+  const { state: { isAuthenticated } } = useContext(GlobalContext);
 
   return (
     <Route
