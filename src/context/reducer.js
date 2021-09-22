@@ -1,55 +1,106 @@
+import { act } from 'react-dom/test-utils';
 import {
-  SET_IS_AUTHENTICATED,
+  AUTHENTICATED,
   UPDATE_EMAIL,
   UPDATE_PASSWORD,
-  UPDATE_CHANNEL_TITLE,
-  UPDATE_CHANNEL_DESCRIPTION,
-  CLEAR_GLOBAL_STATE,
-  UPDATE_USER_NAME,
   UPDATE_FIRST_NAME,
   UPDATE_LAST_NAME,
-  SEND_TEXT_MESSAGE,
+  UPDATE_CHANNEL_ID,
+  UPDATE_CHANNEL_TITLE,
+  UPDATE_CHANNEL_DESCRIPTION,
   UPDATE_INPUT_TEXT_MESSAGE
+  SEND_MESSAGE,
+  CLEAR_GLOBAL_STATE,
 } from './actions';
 
 export const initialState = {
-  email: '',
-  password: '',
-  isAuthenticated: false,
-  channelTitle: '',
-  channelDescription: '',
-  userName: 'Stark',
-  firstName: '',
-  lastName: '',
-  channelMessages: [],
-  textMessage: '',
-  sendTextMessage: ''
+  isAuthenticated: JSON.parse(localStorage.getItem('isAuthenticated')) || false,
+  user: {
+    email: '',
+    password: '',
+    firstName: 'Stark',
+    lastName: '',
+  },
+  channel: {
+    id: null,
+    title: '',
+    description: '',
+    inputTextMessage: '',
+    messages: [],
+  },
 };
 
 export const reducer = (state, action) => {
+  const updateUserField = (keyValue) => ({
+    ...state,
+    user: {
+      ...state.user,
+      ...keyValue
+    },
+  });
+  const updateChannelField = (keyValue) => ({
+    ...state,
+    channel: {
+      ...state.channel,
+      ...keyValue
+    },
+  });
+  const addNewMessage = (message) => ({
+    ...state,
+    channel: {
+      ...state.channel,
+      messages: [
+        ...state.channel.messages,
+        {
+          id: state.channel.messages.length + 1,
+          ...message,
+        },
+      ],
+    },
+  });
+
   switch (action.type) {
+    case AUTHENTICATED:
+      return {
+        ...state,
+        isAuthenticated: true
+      };
     case UPDATE_EMAIL:
-      return { ...state, email: action.email };
+      return updateUserField({
+        email: action.email
+      });
     case UPDATE_PASSWORD:
-      return { ...state, password: action.password };
-    case SET_IS_AUTHENTICATED:
-      return { ...state, isAuthenticated: action.isAuthenticated };
+      return updateUserField({
+        password: action.password
+      });
+    case UPDATE_FIRST_NAME:
+      return updateUserField({
+        firstName: action.firstName
+      });
+    case UPDATE_LAST_NAME:
+      return updateUserField({
+        lastName: action.lastName
+      });
+    case UPDATE_CHANNEL_ID:
+      return updateChannelField({
+        id: action.id
+      });
     case UPDATE_CHANNEL_TITLE:
-      return { ...state, channelTitle: action.title };
+      return updateChannelField({
+        title: action.title
+      });
     case UPDATE_CHANNEL_DESCRIPTION:
-      return { ...state, channelDescription: action.description };
+      return updateChannelField({
+        description: action.description
+      });
+    case UPDATE_INPUT_TEXT_MESSAGE:
+      return updateChannelField({
+        inputTextMessage: action.text
+      });
+    case SEND_MESSAGE:
+      return addNewMessage(action.message);
     case CLEAR_GLOBAL_STATE:
       return initialState;
-    case UPDATE_USER_NAME:
-      return { ...state, userName: action.userName};
-    case UPDATE_FIRST_NAME:
-      return { ...state, firstName: action.firstName};
-    case UPDATE_LAST_NAME:
-      return { ...state, lastName: action.lastName };
-    case UPDATE_INPUT_TEXT_MESSAGE:
-      return { ...state, textMessage: action.textMessage };
-    case SEND_TEXT_MESSAGE:
-      return { ...state, sendTextMessage: action.sendText };
     default:
       return state;
   }

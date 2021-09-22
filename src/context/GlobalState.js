@@ -8,7 +8,7 @@ const GlobalState = ({ children }) => {
   const actions = getActions(dispatch);
 
   return (
-    <GlobalContext.Provider value={{ ...state, ...actions }}>
+    <GlobalContext.Provider value={{ state, actions }}>
       {children}
     </GlobalContext.Provider>
   );
