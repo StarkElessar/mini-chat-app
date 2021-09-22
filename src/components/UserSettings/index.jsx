@@ -20,27 +20,30 @@ const UserSettings = () => {
   const onChangeLastName = (event) => updateLastName(event.target.value);
   
   return (
-    <div className="settings__wrapper">
-      <h2>User Settings</h2>
-      <div className="col-1">
-        <div className="avatar">
-          <img src="https://themified.com/friend-finder/images/users/user-4.jpg" alt="user-avatar" />
+    <div className="settings__container">
+      <div className="settings__wrapper">
+        <h2>User Settings</h2>
+        <div className="col-1">
+          <div className="avatar">
+            <img src="https://themified.com/friend-finder/images/users/user-4.jpg" alt="user-avatar" />
+          </div>
         </div>
-      </div>
-      <div className="col-2">
-        <div className='label__input'>
-          <label htmlFor="pass">First Name:</label>
-          <input onChange={onChangeFirstName} className='input__setting' type="text" placeholder='Enter your First Name..' value={firstName} />
+        <div className="col-2">
+          <div className='label__input'>
+            <label htmlFor="pass">First Name:</label>
+            <input onChange={onChangeFirstName} className='input__setting' type="text" placeholder='Enter your First Name..' value={firstName} />
+          </div>
+          <div className='label__input'>
+            <label htmlFor="pass">Last Name:</label>
+            <input onChange={onChangeLastName} className='input__setting' type="text" placeholder='Enter your Last Name..' value={lastName} />
+          </div>
+          <NavLink to='/main-page'>
+            <button disabled={!firstName || !lastName} className='apply-btn'>Apply</button>
+          </NavLink>
         </div>
-        <div className='label__input'>
-          <label htmlFor="pass">Last Name:</label>
-          <input onChange={onChangeLastName} className='input__setting' type="text" placeholder='Enter your Last Name..' value={lastName} />
-        </div>
-        <NavLink to='/main-page'>
-          <button disabled={!firstName || !lastName} className='apply-btn'>Apply</button>
-        </NavLink>
       </div>
     </div>
+    
   )
 };
 
