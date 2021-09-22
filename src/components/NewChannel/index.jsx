@@ -72,17 +72,17 @@ const NewChannel = () => {
             width={820}
           >
             {({ index, style }) => {
-                const { id, userName, text, avatar } = messages[index];
+              const { id, userName, text, avatar } = messages[index];
 
-                return (
-                  <Message
-                    key={id}
-                    userName={userName}
-                    text={text}
-                    avatar={avatar}
-                    style={style}
-                  />
-              )
+              return (
+                <Message
+                  key={id}
+                  userName={userName}
+                  text={text}
+                  avatar={avatar}
+                  style={style}
+                />
+              );
             }}
           </List>
         </div>

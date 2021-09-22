@@ -1,3 +1,4 @@
+import { fromJS, Map } from 'immutable';
 import {
   AUTHENTICATED,
   UPDATE_EMAIL,
@@ -31,74 +32,33 @@ export const initialState = {
 };
 
 export const reducer = (state, action) => {
-  const updateUserField = (keyValue) => ({
-    ...state,
-    user: {
-      ...state.user,
-      ...keyValue,
-    },
-  });
-  const updateChannelField = (keyValue) => ({
-    ...state,
-    channel: {
-      ...state.channel,
-      ...keyValue,
-    },
-  });
-  const addNewMessage = (message) => ({
-    ...state,
-    channel: {
-      ...state.channel,
-      messages: [
-        ...state.channel.messages,
-        {
-          id: state.channel.messages.length + 1,
-          ...message,
-        },
-      ],
-    },
-  });
-
+  const immutableState = fromJS(state);
   switch (action.type) {
     case AUTHENTICATED:
-      return {
-        ...state,
-        isAuthenticated: true
-      };
+      return immutableState.setIn(['isAuthenticated'], true).toJS();
     case UPDATE_EMAIL:
-      return updateUserField({
-        email: action.email
-      });
+      return immutableState.setIn(['user', 'email'], action.email).toJS();
     case UPDATE_PASSWORD:
-      return updateUserField({
-        password: action.password
-      });
+      return immutableState.setIn(['user', 'password'], action.password).toJS();
     case UPDATE_FIRST_NAME:
-      return updateUserField({
-        firstName: action.firstName
-      });
+      return immutableState.setIn(['user', 'firstName'], action.firstName).toJS();
     case UPDATE_LAST_NAME:
-      return updateUserField({
-        lastName: action.lastName
-      });
+      return immutableState.setIn(['user', 'lastName'], action.lastName).toJS();
     case UPDATE_CHANNEL_ID:
-      return updateChannelField({
-        id: action.id
-      });
+      return immutableState.setIn(['channel', 'id'], action.id).toJS();
     case UPDATE_CHANNEL_TITLE:
-      return updateChannelField({
-        title: action.title
-      });
+      return immutableState.setIn(['channel', 'title'], action.title).toJS();
     case UPDATE_CHANNEL_DESCRIPTION:
-      return updateChannelField({
-        description: action.description
-      });
+      return immutableState.setIn(['channel', 'description'], action.description).toJS();
     case UPDATE_INPUT_TEXT_MESSAGE:
-      return updateChannelField({
-        inputTextMessage: action.text
-      });
+      return immutableState.setIn(['channel', 'inputTextMessage'], action.text).toJS();
     case SEND_MESSAGE:
-      return addNewMessage(action.message);
+      return immutableState.updateIn(
+        ['channel', 'messages'],
+        messages => messages.push(
+          Map({ id: immutableState.getIn(['channel', 'messages']).size + 1, ...action.message })
+        )
+      ).toJS();
     case CLEAR_GLOBAL_STATE:
       return initialState;
     default:
