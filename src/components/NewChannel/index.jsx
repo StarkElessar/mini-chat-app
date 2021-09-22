@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import GlobalContext from "../../context/GlobalContext";
 import Message from "./Message";
 
-const robotAvatar = 'https://i.pinimg.com/originals/0c/67/5a/0c675a8e1061478d2b7b21b330093444.gif';
+const robotAvatar = 'https://thumbs.dreamstime.com/b/robot-icon-robot-icon-vector-flat-illustration-graphic-web-design-isolated-black-background-artificial-intelligen-188465910.jpg';
 
 const NewChannel = () => {
   const {
