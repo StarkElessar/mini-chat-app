@@ -19,47 +19,47 @@
   justify-content: center;
   align-items: center;
 }
-.labelInput {
+.label__input {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   margin-bottom: 20px;
 }
-.labelInput:last-child {
+.label__input:last-child {
   margin-left: auto;
   margin-bottom: 0px;
 }
-.labelInput label {
+.label__input label {
   margin-bottom: 10px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
 }
-.labelInput input,
-.labelInput button {
+.label__input input,
+.label__input button {
   padding: 10px 10px;
   border-radius: 10px;
   font-family: 'Poppins', sans-serif;
   border: 2px solid #8BC6EC;
   transition: all 250ms ease;
 }
-.labelInput:nth-child(1) input,
-.labelInput:nth-child(2) input {
+.label__input:nth-child(1) input,
+.label__input:nth-child(2) input {
   width: 200px;
 }
-.labelInput input:focus,
-.labelInput button:focus {
+.label__input input:focus,
+.label__input button:focus {
   outline: 0;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2),
               0px 0px 10px 0px rgba(0, 0, 0, 0.2),
               0px 0px 15px 0px rgba(0, 0, 0, 0.2);
 }
-.labelInput:last-child button:hover {
+.label__input:last-child button:hover {
   cursor: pointer;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1),
               0px 0px 10px 0px rgba(0, 0, 0, 0.1),
               0px 0px 15px 0px rgba(0, 0, 0, 0.1);
 }
-.labelInput:last-child button:hover:disabled {
+.label__input:last-child button:hover:disabled {
   cursor: not-allowed;
 }
