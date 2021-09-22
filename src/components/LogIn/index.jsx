@@ -15,7 +15,7 @@ const LogIn = () => {
       authenticate,
       updateEmail,
       updatePassword
-    },
+    }
   } = useContext(GlobalContext);
   const onEmailChange = (event) => updateEmail(event.target.value);
   const onPasswordChange = (event) => updatePassword(event.target.value);

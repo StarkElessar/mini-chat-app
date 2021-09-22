@@ -4,12 +4,15 @@ import { NavLink } from "react-router-dom";
 import GlobalContext from "../../context/GlobalContext";
 import Message from "./Message";
 
+const robotAvatar = 'https://i.pinimg.com/originals/0c/67/5a/0c675a8e1061478d2b7b21b330093444.gif';
+
 const NewChannel = () => {
   const {
     state: {
       user: {
         firstName,
-        lastName
+        lastName,
+        userAvatar,
       },
       channel: {
         title,
@@ -32,12 +35,20 @@ const NewChannel = () => {
   const onSendMessageClick = (event) => {
     event.preventDefault();
 
-    sendMessage({ userName: `${firstName} ${lastName}`, text: inputTextMessage });
+    sendMessage({
+      userName: `${firstName} ${lastName}`,
+      text: inputTextMessage,
+      userAvatar
+    });
     updateInputMessage('');
 
     setTimeout(() => {
-      sendMessage({ userName: 'echo', text: Math.random().toString(36).substring(2, 20) });
-    }, Math.floor(Math.random() * 1000) + 1000);
+      sendMessage({
+        userName: 'echo',
+        text: Math.random().toString(36).substring(2, 20),
+        userAvatar: robotAvatar,
+      });
+    }, Math.floor(Math.random() * 2000) + 1000);
   };
 
   return (
@@ -58,6 +69,7 @@ const NewChannel = () => {
               key={id}
               userName={userName}
               text={text}
+              userAvatar={userAvatar}
             />
           )}
         </div>
