@@ -1,4 +1,3 @@
-import { act } from 'react-dom/test-utils';
 import {
   AUTHENTICATED,
   UPDATE_EMAIL,
@@ -8,7 +7,7 @@ import {
   UPDATE_CHANNEL_ID,
   UPDATE_CHANNEL_TITLE,
   UPDATE_CHANNEL_DESCRIPTION,
-  UPDATE_INPUT_TEXT_MESSAGE
+  UPDATE_INPUT_TEXT_MESSAGE,
   SEND_MESSAGE,
   CLEAR_GLOBAL_STATE,
 } from './actions';
