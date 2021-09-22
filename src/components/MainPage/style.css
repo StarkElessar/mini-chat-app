@@ -63,9 +63,6 @@
   margin-right: 10px;
   transition: all 250ms ease-in-out 0ms;
 }
-.user-login:hover {
-  color: #4698cf;
-}
 .icon-settings {
   position: relative;
   width: 20px;
@@ -150,6 +147,7 @@
   color: #fff;
   font-weight: 800;
   font-family: 'Poppins', sans-serif;
+  text-align: center;
   text-transform: uppercase;
 }
 .newChannel form {
