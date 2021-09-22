@@ -20,6 +20,6 @@ export const getActions = (dispatch) => ({
   updateChannelTitle: (title) => dispatch({ type: UPDATE_CHANNEL_TITLE, title}),
   updateChannelDescription: (description) => dispatch({ type: UPDATE_CHANNEL_DESCRIPTION, description }),
   updateInputMessage: (text) => dispatch({ type: UPDATE_INPUT_TEXT_MESSAGE, text}),
-  sendTextMessage: (message) => dispatch({ type: SEND_MESSAGE, message}),
+  sendMessage: (message) => dispatch({ type: SEND_MESSAGE, message}),
   clearGlobalState: () => dispatch({ type: CLEAR_GLOBAL_STATE }),
 });

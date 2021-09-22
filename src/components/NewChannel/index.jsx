@@ -57,7 +57,7 @@ const NewChannel = () => {
             <Message
               key={id}
               userName={userName}
-              textMessage={text}
+              text={text}
             />
           )}
         </div>

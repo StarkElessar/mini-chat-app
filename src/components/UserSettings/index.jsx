@@ -4,8 +4,18 @@ import GlobalContext from "../../context/GlobalContext";
 import { NavLink } from "react-router-dom";
 
 const UserSettings = () => {
-  const { userName, firstName, lastName, updateUserName, updateFirstName, updateLastName } = useContext(GlobalContext);
-  const onChangeUserName = (event) => updateUserName(event.target.value);
+  const {
+    state: {
+      user: {
+        firstName,
+        lastName
+      }
+    },
+    actions: {
+      updateFirstName,
+      updateLastName
+    }
+  } = useContext(GlobalContext);
   const onChangeFirstName = (event) => updateFirstName(event.target.value);
   const onChangeLastName = (event) => updateLastName(event.target.value);
   
@@ -18,20 +28,16 @@ const UserSettings = () => {
         </div>
       </div>
       <div className="col-2">
-        <div className='labelInput'>
-          <label htmlFor="pass">User Name:</label>
-          <input onChange={onChangeUserName} className='input__setting' type="text" placeholder='Enter your User Name..' value={userName} />
-        </div>
-        <div className='labelInput'>
+        <div className='label__input'>
           <label htmlFor="pass">First Name:</label>
           <input onChange={onChangeFirstName} className='input__setting' type="text" placeholder='Enter your First Name..' value={firstName} />
         </div>
-        <div className='labelInput'>
+        <div className='label__input'>
           <label htmlFor="pass">Last Name:</label>
           <input onChange={onChangeLastName} className='input__setting' type="text" placeholder='Enter your Last Name..' value={lastName} />
         </div>
         <NavLink to='/main-page'>
-          <button disabled={!userName || !firstName || !lastName} className='apply-btn'>Apply</button>
+          <button disabled={!firstName || !lastName} className='apply-btn'>Apply</button>
         </NavLink>
       </div>
     </div>
