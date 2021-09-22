@@ -10,7 +10,7 @@ const MainPage = () => {
     state: {
       user: {
         firstName,
-        userAvatar,
+        avatar,
       }
     }
   } = useContext(GlobalContext);
@@ -25,7 +25,7 @@ const MainPage = () => {
           <div className="mini-nav">
             <span className='user-login'>{firstName}</span>
             <div className="user__avatar">
-              <img src={userAvatar} alt="user__avatar" />
+              <img src={avatar} alt="user__avatar" />
             </div>
             <NavLink className='icon-settings' to='/user-settings'>
               <img className='icon-settings' src={iconSettings} alt="icon-settings" />

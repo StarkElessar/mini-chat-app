@@ -12,7 +12,7 @@ const NewChannel = () => {
       user: {
         firstName,
         lastName,
-        userAvatar,
+        avatar,
       },
       channel: {
         title,
@@ -38,7 +38,7 @@ const NewChannel = () => {
     sendMessage({
       userName: `${firstName} ${lastName}`,
       text: inputTextMessage,
-      userAvatar
+      avatar
     });
     updateInputMessage('');
 
@@ -46,7 +46,7 @@ const NewChannel = () => {
       sendMessage({
         userName: 'echo',
         text: Math.random().toString(36).substring(2, 20),
-        userAvatar: robotAvatar,
+        avatar: robotAvatar,
       });
     }, Math.floor(Math.random() * 2000) + 1000);
   };
@@ -64,12 +64,12 @@ const NewChannel = () => {
           </NavLink>
         </div>
         <div className="chat__body">
-          {messages.map(({ id, userName, text }) =>
+          {messages.map(({ id, userName, text, avatar }) =>
             <Message
               key={id}
               userName={userName}
               text={text}
-              userAvatar={userAvatar}
+              avatar={avatar}
             />
           )}
         </div>

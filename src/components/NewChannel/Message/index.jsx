@@ -1,10 +1,10 @@
 import React from "react";
 
-const Message = ({ userName, text, userAvatar }) => {
+const Message = ({ userName, text, avatar }) => {
   return (
     <div className="user__message">
       <div className="user__avatar">
-        <img src={userAvatar} alt="user-avatar" />
+        <img src={avatar} alt="user-avatar" />
       </div>
       <div className="text__block">
         <span className="user__name">{userName}</span>

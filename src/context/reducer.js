@@ -19,7 +19,7 @@ export const initialState = {
     password: '',
     firstName: 'Stark',
     lastName: '',
-    userAvatar: 'https://themified.com/friend-finder/images/users/user-4.jpg',
+    avatar: 'https://themified.com/friend-finder/images/users/user-4.jpg',
   },
   channel: {
     id: null,
