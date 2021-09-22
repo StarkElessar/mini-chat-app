@@ -1,73 +1,79 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import './style.css';
 import { NavLink } from "react-router-dom";
 import GlobalContext from "../../context/GlobalContext";
+import Message from "./Message";
 
-const NewChannel = (props) => {
-  const { channelTitle, channelDescription, clearGlobalState, firstName, lastName } = useContext(GlobalContext);
-  const [isTextInput, setIsTextInput] = useState();
-  const [isMessage, setIsMessage] = useState([
-    { id: '', userName: '', textMessage: '' }
-  ]);
-
-  const sendNewMessage = (event) => {
+const NewChannel = () => {
+  const {
+    state: {
+      user: {
+        firstName,
+        lastName
+      },
+      channel: {
+        title,
+        description,
+        inputTextMessage,
+        messages
+      },
+    },
+    actions: {
+      clearGlobalState,
+      updateInputMessage,
+      sendMessage
+    }
+  } = useContext(GlobalContext);
+  const onInputTextMessageChange = (event) => updateInputMessage(event.target.value);
+  const onLogoutClick = () => {
+    localStorage.setItem('isAuthenticated', false);
+    clearGlobalState();
+  };
+  const onSendMessageClick = (event) => {
     event.preventDefault();
-    const newMessage = {
-      id: Date.now(),
-      userName: `${firstName} ${lastName}`,
-      textMessage: isTextInput
-    };
-    setIsMessage([...isMessage, newMessage]);
-    setIsTextInput('');
-}
+
+    sendMessage({ userName: `${firstName} ${lastName}`, text: inputTextMessage });
+    updateInputMessage('');
+
+    setTimeout(() => {
+      sendMessage({ userName: 'echo', text: Math.random().toString(36).substring(2, 20) });
+    }, Math.floor(Math.random() * 1000) + 1000);
+  };
 
   return (
     <div className='new-channel__wrapper'>
       <div className="new-channel__body">
         <div className="new-channel__header">
           <div className="title-block">
-            <h2>{channelTitle}</h2>
-            <span>{channelDescription}</span>
+            <h2>{title}</h2>
+            <span>{description}</span>
           </div>
           <NavLink to='/login'>
-            <button onClick={clearGlobalState} className='logout__btn'>Logout</button>
+            <button onClick={onLogoutClick} className='logout__btn'>Logout</button>
           </NavLink>
         </div>
         <div className="chat__body">
-
-          {
-            isMessage.map(({userName, textMessage, id, index}) =>
-              <UserMessage
-                key={id}
-                id={id}
-                userName={userName}
-                textMessage={textMessage}
-              />
-            )}
-
+          {messages.map(({ id, userName, text }) =>
+            <Message
+              key={id}
+              userName={userName}
+              textMessage={text}
+            />
+          )}
         </div>
         <form className="chat__footer">
-          <textarea value={isTextInput} onChange={event => setIsTextInput(event.target.value)} name="user_text" id="user_text" placeholder='Type Your Message..' />
-          <button onClick={sendNewMessage} >Send</button>
+          <textarea
+            onChange={onInputTextMessageChange}
+            value={inputTextMessage}
+            placeholder='Type Your Message..'
+            name="user_text"
+            id="user_text"
+          />
+          <button onClick={onSendMessageClick}>Send</button>
         </form>
       </div>
     </div>
   )
-}
-
-const UserMessage = (props) => {
-  return (
-    <div className="user__message">
-      <div className="user__avatar">
-        <img src="https://themified.com/friend-finder/images/users/user-4.jpg" alt="user-avatar" />
-      </div>
-      <div className="text__block">
-        <span className="user__name">{props.userName}</span>
-        <span className="message__id">{props.id}</span>
-        <span className="user__messages">{props.textMessage}</span>
-      </div>
-    </div>
-  )
-}
+};
 
 export default NewChannel;
