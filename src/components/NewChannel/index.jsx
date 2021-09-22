@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import './style.css';
 import { NavLink } from "react-router-dom";
+import { FixedSizeList as List } from "react-window";
 import GlobalContext from "../../context/GlobalContext";
 import Message from "./Message";
 
@@ -64,14 +65,26 @@ const NewChannel = () => {
           </NavLink>
         </div>
         <div className="chat__body">
-          {messages.map(({ id, userName, text, avatar }) =>
-            <Message
-              key={id}
-              userName={userName}
-              text={text}
-              avatar={avatar}
-            />
-          )}
+          <List
+            itemCount={messages.length}
+            itemSize={80}
+            height={340}
+            width={820}
+          >
+            {({ index, style }) => {
+                const { id, userName, text, avatar } = messages[index];
+
+                return (
+                  <Message
+                    key={id}
+                    userName={userName}
+                    text={text}
+                    avatar={avatar}
+                    style={style}
+                  />
+              )
+            }}
+          </List>
         </div>
         <form className="chat__footer">
           <textarea
