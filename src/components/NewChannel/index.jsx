@@ -3,7 +3,9 @@ import './style.css';
 import { NavLink } from "react-router-dom";
 import { FixedSizeList as List } from "react-window";
 import GlobalContext from "../../context/GlobalContext";
+import AutoSizer from 'react-virtualized-auto-sizer';
 import Message from "./Message";
+import { importAttribute } from "@babel/types";
 
 const robotAvatar = 'https://thumbs.dreamstime.com/b/robot-icon-robot-icon-vector-flat-illustration-graphic-web-design-isolated-black-background-artificial-intelligen-188465910.jpg';
 
@@ -65,26 +67,30 @@ const NewChannel = () => {
           </NavLink>
         </div>
         <div className="chat__body">
-          <List
-            itemCount={messages.length}
-            itemSize={80}
-            height={340}
-            width={820}
-          >
-            {({ index, style }) => {
-              const { id, userName, text, avatar } = messages[index];
+          <AutoSizer>
+            {({ height, width }) => (
+              <List
+                itemCount={messages.length}
+                itemSize={80}
+                height={height}
+                width={width}
+              >
+                {({ index, style }) => {
+                  const { id, userName, text, avatar } = messages[index];
 
-              return (
-                <Message
-                  key={id}
-                  userName={userName}
-                  text={text}
-                  avatar={avatar}
-                  style={style}
-                />
-              );
-            }}
-          </List>
+                  return (
+                    <Message
+                      key={id}
+                      userName={userName}
+                      text={text}
+                      avatar={avatar}
+                      style={style}
+                    />
+                  );
+                }}
+              </List>
+            )}
+          </AutoSizer>
         </div>
         <form className="chat__footer">
           <textarea
