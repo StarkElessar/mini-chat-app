@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import GlobalContext from "../../../context/GlobalContext";
 import { useHistory } from "react-router";
 
-const NewChannelModal = ({ toggleShowModal, isVisible }) => {
+const NewChannelModal = ({ closeModal, isVisible }) => {
   const {
     state: {
       channel: {
@@ -28,7 +28,7 @@ const NewChannelModal = ({ toggleShowModal, isVisible }) => {
   }, [id]);
 
   return (
-    <div onClick={toggleShowModal} className={isVisible ? 'newChannel show' : 'newChannel'}>
+    <div onClick={closeModal} className={isVisible ? 'newChannel show' : 'newChannel'}>
       <div onClick={stopCloseModal}>
         <h2>New Channel</h2>
         <form>
