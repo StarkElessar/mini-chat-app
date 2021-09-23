@@ -33,6 +33,7 @@ export const initialState = {
 
 export const reducer = (state, action) => {
   const immutableState = fromJS(state);
+
   switch (action.type) {
     case AUTHENTICATED:
       return immutableState.setIn(['isAuthenticated'], true).toJS();
