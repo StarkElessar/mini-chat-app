@@ -1,14 +1,11 @@
 # MiniChatApp
 
-This is my draft of a test assignment for an interview. Tools used in this project include:
+This is my draft of a test assignment for an interview. Project has adaptive design.
+
+Tools used in this project:
 
 **ReactJS (useState, useEffect, useContext, useReducer);**
 **Immutable JS**
-**React-Window (This is an improved version of React-virtualized)**
+**React-Window**
 
-## The finished application can be viewed at this address:
-
-http://stark77.beget.tech/
-
-### The project implements an adaptive version of this application.
-### The login form remembers the user and saves him to **localStorage**
+[Demo] (http://stark77.beget.tech/)
