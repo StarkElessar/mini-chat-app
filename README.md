@@ -10,4 +10,5 @@ This is my draft of a test assignment for an interview. Tools used in this proje
 
 http://stark77.beget.tech/
 
-### The project also implemented an adaptive version of this application!
+### The project implements an adaptive version of this application.
+### The login form remembers the user and saves him to **localStorage**
