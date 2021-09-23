@@ -37,7 +37,7 @@ const MainPage = () => {
       <div className="body">
         <h1>Welcome to test chat</h1>
       </div>
-      <NewChannelModal showModal={toggleShowModal} isVisible={isVisible}/>
+      <NewChannelModal toggleShowModal={toggleShowModal} isVisible={isVisible}/>
     </div>
   )
 };
