@@ -1,8 +1,10 @@
 import React from "react";
 
 const Message = ({ userName, text, avatar, style }) => {
+  const messageStyle = userName === 'echo' ? 'echo__message' : 'user__message'
+  
   return (
-    <div className={userName === 'echo' ? 'echo__message' : 'user__message'} style={style}>
+    <div className={messageStyle} style={style}>
       <div className="user__avatar">
         <img src={avatar} alt="user-avatar" />
       </div>

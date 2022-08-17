@@ -54,10 +54,11 @@ export const reducer = (state, action) => {
     case UPDATE_INPUT_TEXT_MESSAGE:
       return immutableState.setIn(['channel', 'inputTextMessage'], action.text).toJS();
     case SEND_MESSAGE:
-      return immutableState.updateIn(
-        ['channel', 'messages'],
-        messages => messages.push(
-          Map({ id: immutableState.getIn(['channel', 'messages']).size + 1, ...action.message })
+      return immutableState.updateIn(['channel', 'messages'], (messages) => (
+          messages.push(Map({
+            id: immutableState.getIn(['channel', 'messages']).size + 1,
+            ...action.message
+          }))
         )
       ).toJS();
     case CLEAR_GLOBAL_STATE:

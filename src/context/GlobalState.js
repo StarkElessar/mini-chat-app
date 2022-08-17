@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+
 import GlobalContext from './GlobalContext';
 import { getActions } from './actions';
 import { initialState, reducer } from './reducer';

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
-import './style.css';
 import { NavLink } from "react-router-dom";
+
+import './style.css';
 import GlobalContext from "../../context/GlobalContext";
 import iconSettings from './img/settings.svg'
 import NewChannelModal from "./NewChannelModal";
@@ -14,6 +15,7 @@ const MainPage = () => {
       }
     }
   } = useContext(GlobalContext);
+  
   const [isVisible, setIsVisible] = useState(false);
   const toggleShowModal = () => setIsVisible(!isVisible);
 

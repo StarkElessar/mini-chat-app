@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
+
 import GlobalContext from '../../../context/GlobalContext';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -12,11 +13,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         isAuthenticated
           ? <Component />
           : <Redirect
-            to={{
-              pathname: '/login',
-              state: { from: location }
-            }}
-          />
+              to={{
+                pathname: '/login',
+                state: { from: location }
+              }}
+            />
       )}
     />
   );

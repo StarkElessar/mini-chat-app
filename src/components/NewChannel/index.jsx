@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import './style.css';
 import { NavLink } from "react-router-dom";
 import { FixedSizeList as List } from "react-window";
-import GlobalContext from "../../context/GlobalContext";
 import AutoSizer from 'react-virtualized-auto-sizer';
+
+import './style.css';
+import GlobalContext from "../../context/GlobalContext";
 import Message from "./Message";
-import { importAttribute } from "@babel/types";
 
 const robotAvatar = 'https://thumbs.dreamstime.com/b/robot-icon-robot-icon-vector-flat-illustration-graphic-web-design-isolated-black-background-artificial-intelligen-188465910.jpg';
 
@@ -30,11 +30,14 @@ const NewChannel = () => {
       sendMessage
     }
   } = useContext(GlobalContext);
+
   const onInputTextMessageChange = (event) => updateInputMessage(event.target.value);
+
   const onLogoutClick = () => {
     localStorage.setItem('isAuthenticated', false);
     clearGlobalState();
   };
+
   const onSendMessageClick = (event) => {
     event.preventDefault();
 

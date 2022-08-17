@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+
 import GlobalContext from '../../context/GlobalContext';
 import './style.css';
 
@@ -30,11 +31,27 @@ const LogIn = () => {
         <form>
           <div className='label__input'>
             <label htmlFor="email">Email</label>
-            <input value={email} onChange={onEmailChange} type="text" id='email' name='user_email' placeholder='Enter Your Email' required />
+            <input
+              value={email}
+              onChange={onEmailChange}
+              type="text"
+              id='email'
+              name='user_email'
+              placeholder='Enter Your Email' 
+              required
+            />
           </div>
           <div className='label__input'>
             <label htmlFor="pass">Password</label>
-            <input value={password} onChange={onPasswordChange} type="password" id='pass' name='user_pass' placeholder='Enter Your Password' required />
+            <input
+              value={password}
+              onChange={onPasswordChange}
+              type="password"
+              id='pass'
+              name='user_pass'
+              placeholder='Enter Your Password' 
+              required
+            />
           </div>
           <div className='label__input'>
             <NavLink to='/main-page'>
@@ -46,7 +63,7 @@ const LogIn = () => {
         </form>
       </div>
     </div>
-    
+
   );
 };
 
