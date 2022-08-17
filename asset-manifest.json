@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/validation-form-react/static/css/main.13b6a6d3.chunk.css",
-    "main.js": "/validation-form-react/static/js/main.72840286.chunk.js",
-    "main.js.map": "/validation-form-react/static/js/main.72840286.chunk.js.map",
-    "runtime-main.js": "/validation-form-react/static/js/runtime-main.9742adf8.js",
-    "runtime-main.js.map": "/validation-form-react/static/js/runtime-main.9742adf8.js.map",
-    "static/js/2.e752406b.chunk.js": "/validation-form-react/static/js/2.e752406b.chunk.js",
-    "static/js/2.e752406b.chunk.js.map": "/validation-form-react/static/js/2.e752406b.chunk.js.map",
-    "index.html": "/validation-form-react/index.html",
-    "static/css/main.13b6a6d3.chunk.css.map": "/validation-form-react/static/css/main.13b6a6d3.chunk.css.map",
-    "static/js/2.e752406b.chunk.js.LICENSE.txt": "/validation-form-react/static/js/2.e752406b.chunk.js.LICENSE.txt",
-    "static/media/settings.0ce7a5bb.svg": "/validation-form-react/static/media/settings.0ce7a5bb.svg"
+    "main.css": "/mini-chat-app/static/css/main.13b6a6d3.chunk.css",
+    "main.js": "/mini-chat-app/static/js/main.72840286.chunk.js",
+    "main.js.map": "/mini-chat-app/static/js/main.72840286.chunk.js.map",
+    "runtime-main.js": "/mini-chat-app/static/js/runtime-main.f98996fd.js",
+    "runtime-main.js.map": "/mini-chat-app/static/js/runtime-main.f98996fd.js.map",
+    "static/js/2.e752406b.chunk.js": "/mini-chat-app/static/js/2.e752406b.chunk.js",
+    "static/js/2.e752406b.chunk.js.map": "/mini-chat-app/static/js/2.e752406b.chunk.js.map",
+    "index.html": "/mini-chat-app/index.html",
+    "static/css/main.13b6a6d3.chunk.css.map": "/mini-chat-app/static/css/main.13b6a6d3.chunk.css.map",
+    "static/js/2.e752406b.chunk.js.LICENSE.txt": "/mini-chat-app/static/js/2.e752406b.chunk.js.LICENSE.txt",
+    "static/media/settings.0ce7a5bb.svg": "/mini-chat-app/static/media/settings.0ce7a5bb.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.9742adf8.js",
+    "static/js/runtime-main.f98996fd.js",
     "static/js/2.e752406b.chunk.js",
     "static/css/main.13b6a6d3.chunk.css",
     "static/js/main.72840286.chunk.js"
